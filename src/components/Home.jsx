@@ -107,7 +107,7 @@ const Home = () => {
                                     </div>
                                 )}
                                 {/* <p className='text-xl'>{task.title}</p> */}
-                                <p className={`text-lg lg:text-xl ${task.completed ? "line-through text-gray-400" : "no-underline"}`}>{task.title}</p>
+                                <p className={`text-[14px] lg:text-xl ${task.completed ? "line-through text-gray-400" : "no-underline"}`}>{task.title}</p>
                             </div>
 
                             <img 
