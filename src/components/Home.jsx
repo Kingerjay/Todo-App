@@ -62,7 +62,7 @@ const Home = () => {
         </div>
 
         {/* Form container */}
-        <div className='w-4/5 lg:w-2/3 xl:w-3/5 2xl:w-2/5 h-[500px] absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
+        <div className='w-4/5 lg:w-2/3 xl:w-3/5 2xl:w-2/5 h-[500px] absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
 
             {/* Top Text */}
             <div className='flex items-center justify-between pb-[3rem]'>
