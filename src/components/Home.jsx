@@ -80,7 +80,7 @@ const Home = () => {
 
                 <input 
                 type="text" 
-                className='bg-transparent w-full h-[65px] outline-0 text-xl'
+                className='bg-transparent w-full h-[65px] outline-0 text-lg lg:text-xl'
                 placeholder='Enter a task here...' 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -107,7 +107,7 @@ const Home = () => {
                                     </div>
                                 )}
                                 {/* <p className='text-xl'>{task.title}</p> */}
-                                <p className={`text-xl ${task.completed ? "line-through text-gray-400" : "no-underline"}`}>{task.title}</p>
+                                <p className={`text-lg lg:text-xl ${task.completed ? "line-through text-gray-400" : "no-underline"}`}>{task.title}</p>
                             </div>
 
                             <img 
