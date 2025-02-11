@@ -93,7 +93,7 @@ const Home = () => {
                 {/* Todo list container */}
                 <div className='mt-8 shadow-lg max-h-fit rounded-md'>
                     {tasks.map((task) => (
-                    <div key={task.id} className='bg-white w-full h-[65px] rounded-t-md flex items-center justify-between p-4 border-b-[lightgray] border-b-3 mb-2 group'>
+                    <div key={task.id} className='bg-white w-full h-[65px] rounded-t-md flex items-center justify-between p-4 border-b-[lightgray] border-b-3 group'>
                             <div className='flex items-center gap-4'
                             onClick={() => toggleTaskCompletion(task.id)}>
                                 {task.completed ? (
