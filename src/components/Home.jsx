@@ -35,8 +35,8 @@ const Home = () => {
 
     // Function to toggle task completion
     const toggleTaskCompletion = (taskId) => {
-        setTasks(filteredTasks.map(task => task.id === taskId ? { ...task, completed: !task.completed } : task));
-    };
+    setTasks(tasks.map(task => task.id === taskId ? { ...task, completed: !task.completed } : task));
+};
 
     // Function to delete a task
     const deleteTask = (taskId) => {
@@ -53,8 +53,8 @@ const Home = () => {
 
     // Save tasks to localStorage whenever tasks change
     useEffect(() => {
-        localStorage.setItem("tasks", JSON.stringify(updatedTask));
-    }, [tasks]);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}, [tasks]);
 
     // Function to clear completed tasks
   const clearCompleted = () => {
@@ -108,35 +108,32 @@ const Home = () => {
 
                 {/* Todo list container */}
                 <div className='mt-8 shadow-lg max-h-fit rounded-md'>
-                    {tasks.map((task) => (
-                    <div key={task.id} className='bg-white w-full h-[65px] rounded-t-md flex items-center justify-between p-4 border-b-[lightgray] border-b-3 group'>
-                            <div className='flex items-center gap-4'
-                            onClick={() => toggleTaskCompletion(task.id)}>
-                                {task.completed ? (
-                                    <div className='rounded-full w-5 h-5 flex justify-center items-center cursor-pointer'
-                                    title='un-mark'
-                                    style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover' }}>
-                                        <img src={iconcheck} alt="" />
-                                    </div>
-                                ) : (
-                                    <div className='circle-border rounded-full w-5 h-5 flex justify-center items-center cursor-pointer'
-                                    title='mark'>
-                                        
-                                    </div>
-                                )}
-                                {/* <p className='text-xl'>{task.title}</p> */}
-                                <p className={`text-[14px] lg:text-xl ${task.completed ? "line-through text-gray-400" : "no-underline"}`}>{task.title}</p>
-                            </div>
+                    {filteredTasks.map((task) => (
+    <div key={task.id} className='bg-white w-full h-[65px] rounded-t-md flex items-center justify-between p-4 border-b-[lightgray] border-b-3 group'>
+        <div className='flex items-center gap-4' onClick={() => toggleTaskCompletion(task.id)}>
+            {task.completed ? (
+                <div className='rounded-full w-5 h-5 flex justify-center items-center cursor-pointer'
+                     title='un-mark'
+                     style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover' }}>
+                    <img src={iconcheck} alt="" />
+                </div>
+            ) : (
+                <div className='circle-border rounded-full w-5 h-5 flex justify-center items-center cursor-pointer'
+                     title='mark'>
+                </div>
+            )}
+            <p className={`text-[14px] lg:text-xl ${task.completed ? "line-through text-gray-400" : "no-underline"}`}>
+                {task.title}
+            </p>
+        </div>
 
-                            <img 
-                            src={iconcross} 
-                            onClick={() => deleteTask(task.id)} 
-                            alt=""
-                            title='remove'
-                            className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer right-4" 
-                            />
-                        </div>
-                    ))}
+        <img src={iconcross}
+             onClick={() => deleteTask(task.id)}
+             alt=""
+             title='remove'
+             className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer right-4" />
+    </div>
+))}
                     
                     {/* bottom container */}
                     <div className='flex justify-between items-center px-5 py-3'>
