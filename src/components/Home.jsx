@@ -11,6 +11,8 @@ const Home = () => {
     const [tasks, setTasks] = useState([]);
     const [input, setInput] = useState("");
     const [id, setId] = useState(1);
+    const [filter, setFilter] = useState("all"); // 'all', 'active', 'completed'
+
 
     // Function to add New Task
     const addTask = (e) => {
@@ -33,7 +35,7 @@ const Home = () => {
 
     // Function to toggle task completion
     const toggleTaskCompletion = (taskId) => {
-        setTasks(tasks.map(task => task.id === taskId ? { ...task, completed: !task.completed } : task));
+        setTasks(filteredTasks.map(task => task.id === taskId ? { ...task, completed: !task.completed } : task));
     };
 
     // Function to delete a task
@@ -51,8 +53,22 @@ const Home = () => {
 
     // Save tasks to localStorage whenever tasks change
     useEffect(() => {
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+        localStorage.setItem("tasks", JSON.stringify(updatedTask));
     }, [tasks]);
+
+    // Function to clear completed tasks
+  const clearCompleted = () => {
+    const activeTasks = tasks.filter((task) => !task.completed);
+    setTasks(activeTasks);
+    localStorage.setItem("tasks", JSON.stringify(activeTasks));
+  };
+
+  // Get filtered tasks based on filter state
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "active") return !task.completed;
+    if (filter === "completed") return task.completed;
+    return true;
+  });
 
   return (
     <div className='w-full'>
@@ -123,7 +139,41 @@ const Home = () => {
                     ))}
                     
                     {/* bottom container */}
-                    <div><br /></div>
+                    <div className='flex justify-between items-center px-5 py-3'>
+                        <div>{tasks.filter((task) => !task.completed).length} items left</div>
+                        <div className='flex gap-4'>
+                            <p
+                className={`cursor-pointer ${
+                  filter === "all" ? "font-bold text-blue-500" : ""
+                }`}
+                onClick={() => setFilter("all")}
+              >
+                All
+              </p>
+              <p
+                className={`cursor-pointer ${
+                  filter === "active" ? "font-bold text-blue-500" : ""
+                }`}
+                onClick={() => setFilter("active")}
+              >
+                Active
+              </p>
+              <p
+                className={`cursor-pointer ${
+                  filter === "completed" ? "font-bold text-blue-500" : ""
+                }`}
+                onClick={() => setFilter("completed")}
+              >
+                Completed
+              </p>
+                        </div>
+                        <div
+              className="cursor-pointer text-red-500"
+              onClick={clearCompleted}
+            >
+              Clear Completed
+            </div>
+                    </div>
 
 
                 </div>
