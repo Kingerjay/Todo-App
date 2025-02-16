@@ -118,10 +118,10 @@ const Home = () => {
                 
 
                 {/* Todo list container */}
-                <div className='mt-8 shadow-lg max-h-fit rounded-md mb-8 overflow-hidden'>
+                <div className='mt-8 shadow-lg max-h-fit rounded-md mb-4 overflow-hidden'>
                 {filteredTasks.length === 0 ? (
                     <div className="bg-white w-full h-[65px] flex items-center justify-center p-4 text-gray-500">
-                        No task yet
+                        <p className='notask'>No task yet</p>
                     </div>
                 ) : (
                     filteredTasks.map((task, index) => (
@@ -181,7 +181,9 @@ const Home = () => {
                 </div>
             </div>
 
-
+        <div className="bg-white w-full flex items-center justify-center py-5 text-gray-500 ">
+                        <p className=''>Todo - List</p>
+                    </div>
         </div>
 
     </div>

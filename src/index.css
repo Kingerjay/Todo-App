@@ -30,6 +30,31 @@ body {
   border: 2.5px solid blueviolet;
 }
 
+.notask {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid gray; /* Mimics a cursor */
+  width: 10ch; /* Start width */
+  animation: typing 4s steps(10, end) alternate infinite,
+    blinkCursor 0.6s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 10ch;
+  }
+}
+
+@keyframes blinkCursor {
+  50% {
+    border-color: transparent;
+  }
+}
+
 @media screen and (max-width: 450px) {
   .mobile {
     width: 95%;
