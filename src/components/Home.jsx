@@ -156,7 +156,7 @@ const Home = () => {
     )}
 
                 {/* Bottom container */}
-                <div className='flex flex-col gap-2 px-5 py-3 rounded-md bg-white shadow-md'>
+                <div className='flex flex-col gap-2 px-5 py-3 rounded-b-md bg-white shadow-md'>
                     {/* First Row (Tasks Left & Clear Completed) - Always in one line */}
                     <div className="flex justify-between w-full ">
                         <div className='hover:font-bold'>{tasks.filter((task) => !task.completed).length} tasks left</div>
