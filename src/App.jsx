@@ -3,6 +3,7 @@ import './index.css'
 import { Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -10,8 +11,10 @@ function App() {
     <Routes>
       
       <Route path="/" element={<Home/>} /> 
+      
 
     </Routes>
+    // <UseEffectExer/>
   )
 }
 
